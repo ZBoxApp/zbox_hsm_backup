@@ -24,7 +24,7 @@ module ZboxHsmBackup
     def backup(hsm, options)
       sync_paths = "#{SOURCE_PATH}/#{hsm}/ #{BACKUP_PATH}/#{hsm}/"
       system("mount -o remount,rw #{BACKUP_PATH}/#{hsm}/")
-      result = `/usr/bin/rsync -av --delete #{sync_paths}`
+      result = `/usr/bin/rsync -aHAX --delete #{sync_paths}`
       system("mount -o remount,ro #{BACKUP_PATH}/#{hsm}/")
       send_report(options[:to], options[:mta], hsm, result)
     end
