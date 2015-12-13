@@ -10,6 +10,7 @@ ARGV << '-h' if ARGV.empty?
 options = {}
 optparse = OptionParser.new do |opts|
  opts.banner = "Usage: zbox_hsm_backup -s [HSM STATUS: online | offline]"
+ opts.banner << "\vVersion: #{ZboxHsmBackup::VERSION}\n"
 
  opts.on("-sSTATUS", "--status=STATUS", "Respaldar HSM activo o inactivo") do |o|
    options[:status] = o
